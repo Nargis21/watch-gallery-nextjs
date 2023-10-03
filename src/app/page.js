@@ -1,8 +1,15 @@
 import Products from "@/components/UI/Products";
 
-const HomePage = async () => {
-  const res = await fetch('http://localhost:5000/watches')
+const getData = async () => {
+  const res = await fetch('http://localhost:5000/watches', { cache: 'force-cache' })
   const data = await res.json()
+  return data
+}
+
+const HomePage = async () => {
+  // const res = await fetch('http://localhost:5000/watches', { cache: 'force-cache' })
+  // const data = await res.json()
+  const data = await getData()
   return (
     <div>
       <h1 className="text-4xl text-center my-10">Welcome To Watch Gallery</h1>
